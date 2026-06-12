@@ -1,0 +1,15 @@
+[project]
+name = "LeistungskurveOOP"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "laurencebichlbauer04",email = "lth.bichlbauer04@mci4me.at"},
+]
+dependencies = []
+requires-python = "==3.14.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
