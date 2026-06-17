@@ -5,7 +5,6 @@ from datetime import datetime
 class Person:
 
     def __init__(self, id, date_of_birth, firstname, lastname,picture_path, ekg_tests, gender="male"):
-
         self.id = id
         self.date_of_birth = date_of_birth
         self.firstname = firstname

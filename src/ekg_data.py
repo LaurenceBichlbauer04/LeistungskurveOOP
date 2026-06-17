@@ -46,10 +46,14 @@ class EKGdata:
 
             if last < current and current > next and current > threshold:
                 peaks.append(index-respacing_factor)
+        
         self.peaks = peaks
         return peaks
 
     def plot_time_series(self):
+        if self.peaks == 0:
+            self.find_peaks()
+        
         fig, ax = plt.subplots(figsize=(12, 5))
 
         ax.plot(

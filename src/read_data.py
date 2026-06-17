@@ -8,7 +8,7 @@ def load_person_data():
     file = open("data/person_db.json")
     person_data = json.load(file)
     return person_data
-# %%
+
 
 def get_person_list(person_data):
     """A Function that takes the Persons-Dictionary and returns a List auf all person names"""
