@@ -1,37 +1,35 @@
-#%% Import
+
 import json
 import pandas as pd
 
-# Opening JSON file
-def load_person_data():
-    """A Function that knows where te person Database is and returns a Dictionary with the Persons"""
-    file = open("data/person_db.json")
-    person_data = json.load(file)
-    return person_data
 
 
-def get_person_list(person_data):
-    """A Function that takes the Persons-Dictionary and returns a List auf all person names"""
-    list_of_names = []
-
-    for eintrag in person_data:
-        list_of_names.append(eintrag["lastname"] + ", " +  eintrag["firstname"])
-    return list_of_names
+def load_person_data(path="data/person_db.json"):
+    with open(path, "r", encoding="utf-8") as file:
+        return json.load(file)
 
 
+# def get_person_list(person_data):
+    
+#     list_of_names = []
 
-# %% Test
-#get_person_list(load_person_data())
+#     for eintrag in person_data:
+#         list_of_names.append(eintrag["lastname"] + ", " +  eintrag["firstname"])
+#     return list_of_names
 
 
-# %%
+def get_name_to_id(person_data):
+    name_to_id = {}
+
+    for person in person_data:
+        name = person["lastname"] + ", " + person["firstname"]
+        name_to_id[name] = person["id"]
+
+    return name_to_id
 
 def find_person_data_by_name(suchstring):
-    """ Eine Funktion der Nachname, Vorname als ein String übergeben wird
-    und die die Person als Dictionary zurück gibt"""
-    
     person_data = load_person_data()
-    #print(suchstring)
+    
     if suchstring == "None":
         return {}
 
@@ -48,11 +46,11 @@ def find_person_data_by_name(suchstring):
     else:
         return {}
 
+if __name__ == "__main__":
+    list = load_person_data()
+    #person_list = get_person_list(list)
+    nameid = get_name_to_id(list)
 
-
-# %% Test
-#current_person = find_person_data_by_name("Statham, Jason")
-#current_person
-#current_picture_path = current_person["picture_path"]
-#current_picture_path
-# %%
+    print(list)
+    #print(person_list)
+    print(nameid)
